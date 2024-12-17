@@ -1,0 +1,33 @@
+<div class="container mt-5">
+  <h2>Ingreso de Información</h2>
+  <form>
+    <!-- Tipo de documento -->
+    <div class="form-group">
+      <label for="documentType">Tipo de documento</label>
+      <select id="documentType" class="form-control" [(ngModel)]="documentType" name="documentType" required>
+        <option value="" disabled selected>Seleccione...</option>
+        <option value="CC">Cédula de ciudadanía</option>
+        <option value="PS">Pasaporte</option>
+      </select>
+    </div>
+
+    <!-- Número de documento -->
+    <div class="form-group">
+      <label for="documentNumber">Número de documento</label>
+      <input
+        id="documentNumber"
+        class="form-control"
+        type="text"
+        maxlength="11"
+        [(ngModel)]="documentNumber"
+        name="documentNumber"
+        [ngClass]="{'is-invalid': documentNumberInvalid}"
+        (input)="validateDocumentNumber()"
+        required
+      />
+    </div>
+
+    <!-- Botón buscar -->
+    <button class="btn btn-primary" [disabled]="!formValid" (click)="onSearch()">Buscar</button>
+  </form>
+</div>
